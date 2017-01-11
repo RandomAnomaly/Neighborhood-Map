@@ -4,19 +4,43 @@
 <head>
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
     <!-- endbuild -->
 </head>
 
 <body>
-    <button data-bind="click: cl">Click</button>
-    <div id="map" data-bind="map: myMap"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3">
+                <h1>Map</h1>
+                <form class="form-group">
+                    <label for="search-box">Filter</label>
+                    <input type="text" class="form-control" id="search-box" placeholder="Restaurants">
+                </form>
 
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th>Retaurant</th>
+                            <th>Rating</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-xs-9">
+                
+                <div id="map" data-bind="map: myMap"></div>
+            </div>
+        </div>
+    </div>
     <!-- build:js scripts/main.js -->
     <script type="text/javascript" src="../node_modules/knockout/build/output/knockout-latest.js"></script>
     <script type="text/javascript" src="scripts/model/model.js"></script>
     <script type="text/javascript" src="scripts/viewmodel/viewmodel.js"></script>
     <!-- endbuild -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTn_z5rWDu3IH_e2dNRG0F2-J0oO9LTa4&callback=applyBindings" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTn_z5rWDu3IH_e2dNRG0F2-J0oO9LTa4&callback=applyBindings"
+        async defer></script>
 </body>
 
 </html>

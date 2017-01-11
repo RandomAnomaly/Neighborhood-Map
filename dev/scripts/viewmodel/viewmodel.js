@@ -1,7 +1,3 @@
-var ListView = function () {
-
-}
-
 var ViewModel = function () {
 	var self = this;
 
@@ -60,11 +56,6 @@ ko.bindingHandlers.map = {
 
 
 };
-
-
-
-
-
 
 var applyBindings = function () {
 	ko.applyBindings(new ViewModel());
