@@ -11,14 +11,6 @@ var ViewModel = function () {
 
 	this.cl = function () {
 	}
-
-// 	var latLng = new google.maps.LatLng(-41.288889, 174.777222);
-// 	var marker = new google.maps.Marker({
-//       position: latLng,
-//       title:"Hello World!",
-//       visible: true
-//   });
-//   marker.setMap(self.myMap().googleMap);
 }
 
 
@@ -48,7 +40,8 @@ ko.bindingHandlers.map = {
 			map: mapObj.googleMap,
 			position: latLng,
 			title: "Title"
-		})
+		});
+
 	}
 
 
