@@ -1,0 +1,45 @@
+{
+  "name": "neighborhood",
+  "version": "1.0.0",
+  "description": "A template for web development - contains a basic folder structure and a gulp pipeline",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RandomAnomaly/web-dev-template.git"
+  },
+  "author": "Jack Gammon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RandomAnomaly/web-dev-template/issues"
+  },
+  "homepage": "https://github.com/RandomAnomaly/web-dev-template#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.6",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rev": "^7.1.2",
+    "gulp-uglify": "^2.0.0",
+    "gulp-usemin": "^0.3.27",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.1",
+    "knockout": "^3.4.1"
+  },
+  "dependencies": {
+    "del": "^2.2.2",
+    "browser-sync": "^2.18.6",
+    "gulp-jshint": "^2.0.4",
+    "gulp": "^3.9.1",
+    "gulp-uglify": "^2.0.0",
+    "jshint-stylish": "^2.2.1",
+    "jshint": "^2.9.4",
+    "gulp-usemin": "^0.3.27",
+    "knockout": "^3.4.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rev": "^7.1.2"
+  }
+}
