@@ -1,16 +1,16 @@
 var ViewModel = function () {
-	var self = this;
+  var self = this;
 
-	var lt = -41.288889;
-	var lon = 174.777222;
+  var lt = -41.288889;
+  var lon = 174.777222;
 
-	self.myMap = ko.observable({
-		lat: ko.observable(lt),
-		lng: ko.observable(lon)
-	});
+  self.myMap = ko.observable({
+    lat: ko.observable(lt),
+    lng: ko.observable(lon)
+  });
 
-	this.cl = function () {
-	}
+  this.cl = function () {
+  }
 }
 
 
@@ -22,32 +22,44 @@ var ViewModel = function () {
 // Custom binding from http://stackoverflow.com/questions/12722925/google-maps-and-knockoutjs
 ko.bindingHandlers.map = {
 
-	init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
-		var mapObj = ko.utils.unwrapObservable(valueAccessor());
-		var latLng = new google.maps.LatLng(
-			ko.utils.unwrapObservable(mapObj.lat),
-			ko.utils.unwrapObservable(mapObj.lng));
-		var mapOptions = {
-			center: latLng,
-			zoom: 18,
-			mapTypeId: google.maps.MapTypeId.ROADMAP
-		};
+  init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+    var mapObj = ko.utils.unwrapObservable(valueAccessor());
+    var latLng = new google.maps.LatLng(
+      ko.utils.unwrapObservable(mapObj.lat),
+      ko.utils.unwrapObservable(mapObj.lng));
+    var mapOptions = {
+      center: latLng,
+      zoom: 18,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
 
-		mapObj.googleMap = new google.maps.Map(element, mapOptions);
+    mapObj.googleMap = new google.maps.Map(element, mapOptions);
+    service = new google.maps.places.PlacesService(mapObj.googleMap);
 
+    var request = {
+      location: latLng,
+      radius: '500',
+      types: ['store']
+    };
+    service.nearbySearch(request, function (results, status) {
+      // TODO: error handling
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
 
-		mapObj.marker = new google.maps.Marker({
-			map: mapObj.googleMap,
-			position: latLng,
-			title: "Title"
-		});
+      }
+    });
 
-	}
+    mapObj.marker = new google.maps.Marker({
+      map: mapObj.googleMap,
+      position: latLng,
+      title: "Title"
+    });
+
+  }
 
 
 };
 
 var applyBindings = function () {
-	ko.applyBindings(new ViewModel());
+  ko.applyBindings(new ViewModel());
 }
 
