@@ -67,7 +67,7 @@ gulp.task('browser-sync', ['default'], function () {
             baseDir: "dist",
             index: "index.html"
         },
-        reloadDelay: 1000
+        reloadDelay: 0
     });
 
     // Watch any files in dist/, reload on change

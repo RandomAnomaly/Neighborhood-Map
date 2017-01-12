@@ -28,8 +28,8 @@ ko.bindingHandlers.map = {
       ko.utils.unwrapObservable(mapObj.lat),
       ko.utils.unwrapObservable(mapObj.lng));
     var mapOptions = {
-      center: latLng,
-      zoom: 18,
+      center: model.position,
+      zoom: model.mapDefaultZoom,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       styles: model.mapStyles
     };
@@ -38,10 +38,12 @@ ko.bindingHandlers.map = {
     service = new google.maps.places.PlacesService(mapObj.googleMap);
 
     var request = {
-      location: latLng,
+      location: {lat: -41.288889, lng: 174.777222},
       radius: '500',
       types: ['store']
     };
+
+    // TODO move to model
     service.nearbySearch(request, function (results, status) {
       // TODO: error handling
       if (status == google.maps.places.PlacesServiceStatus.OK) {
