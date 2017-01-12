@@ -4,10 +4,7 @@ var ViewModel = function () {
   var lt = -41.288889;
   var lon = 174.777222;
 
-  self.myMap = ko.observable({
-    lat: ko.observable(lt),
-    lng: ko.observable(lon)
-  });
+  self.myMap = ko.observable();
 
   this.cl = function () {
   }
@@ -23,15 +20,14 @@ var ViewModel = function () {
 ko.bindingHandlers.map = {
   init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
     var mapObj = ko.utils.unwrapObservable(valueAccessor());
-    var latLng = new google.maps.LatLng(
-      ko.utils.unwrapObservable(mapObj.lat),
-      ko.utils.unwrapObservable(mapObj.lng));
+    
     var mapOptions = {
       center: model.position,
       zoom: model.mapDefaultZoom,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       styles: model.mapStyles
     };
+
     mapObj.googleMap = new google.maps.Map(element, mapOptions);
     service = new google.maps.places.PlacesService(mapObj.googleMap);
 
