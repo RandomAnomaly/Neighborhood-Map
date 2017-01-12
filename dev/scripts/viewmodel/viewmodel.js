@@ -1,14 +1,17 @@
-var ViewModel = function (map) {
+var ViewModel = function (map,positions) {
   var self = this;
 
-  
+  self.googleMap = map;
+
+
 }
 
 
 function createMap() {
   return new google.maps.Map(document.getElementById('map'), {
     center: model.position,
-    zoom: model.mapDefaultZoom
+    zoom: model.mapDefaultZoom,
+    styles: model.mapStyles
   })
 }
 
