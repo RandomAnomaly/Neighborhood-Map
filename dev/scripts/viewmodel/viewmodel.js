@@ -33,6 +33,9 @@ var ViewModel = function (map) {
   self.filteredItems = ko.computed(function () {
     var filter = self.searchString().toLowerCase();
     if (!filter) {
+      self.placeList().forEach(function(v,i){
+        v.isVisible(true);
+      });
       return self.placeList();
     } else {
       return ko.utils.arrayFilter(self.placeList(), function (item) {

@@ -1,7 +1,7 @@
 var model = {
   position: { lat: -41.288889, lng: 174.777222 }, // position where the map is going to center on
   searchRadius: 1000, // radius in meters from the position value to find markers on google places
-  placesSearchTypes: ['restaurant', 'bar'], // the types of locations to find on google places
+  placesSearchTypes: ['restaurant', 'bar', 'art_gallery', 'casino', 'liquor_store', 'meal_takeaway', 'meal_delivery', 'movie_rental', 'movie_theater'], // the types of locations to find on google places
   mapDefaultZoom: 16, // the starting zoom level
   mapStyles: [
     { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
