@@ -21,7 +21,6 @@ var ViewModel = function () {
 
 // Based on custom binding from http://stackoverflow.com/questions/12722925/google-maps-and-knockoutjs
 ko.bindingHandlers.map = {
-
   init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
     var mapObj = ko.utils.unwrapObservable(valueAccessor());
     var latLng = new google.maps.LatLng(
@@ -33,14 +32,13 @@ ko.bindingHandlers.map = {
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       styles: model.mapStyles
     };
-
     mapObj.googleMap = new google.maps.Map(element, mapOptions);
     service = new google.maps.places.PlacesService(mapObj.googleMap);
 
     var request = {
-      location: {lat: -41.288889, lng: 174.777222},
-      radius: '500',
-      types: ['store']
+      location: model.position,
+      radius: model.searchRadius,
+      types: model.placesSearchTypes
     };
 
     // TODO move to model
