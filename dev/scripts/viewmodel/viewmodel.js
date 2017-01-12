@@ -1,8 +1,15 @@
-var ViewModel = function (map,positions) {
+var ViewModel = function (map, positions) {
   var self = this;
 
   self.googleMap = map;
 
+  for(var i = 0; i < positions.length; i += 1){
+    new google.maps.Marker({
+      map: self.googleMap,
+      position: positions[i].latlng,
+      title: positions[i].name
+    })
+  }
 
 }
 
