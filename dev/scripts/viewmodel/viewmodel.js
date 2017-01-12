@@ -1,7 +1,7 @@
 // The application's viewmodel
 var ViewModel = function (map, positions) {
   var self = this;
-  var places = ko.observableArray([]);
+  self.placeList = ko.observableArray([]);
 
   self.googleMap = map;
 
@@ -38,7 +38,7 @@ var ViewModel = function (map, positions) {
             position: results[i].geometry.location,
             title: results[i].name
           });
-          places().push(place);
+          self.placeList.push(place);
 
         }
       }

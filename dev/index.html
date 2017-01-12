@@ -17,13 +17,16 @@
           <label for="search-box">Filter</label>
           <input type="text" class="form-control" id="search-box" placeholder="Restaurants">
         </form>
-
         <table class="table table-hover">
-          <tbody>
+          <tbody data-bind="foreach: placeList()">
             <tr>
+              <th data-bind="text: name"></th>
+              <th></th>
+            </tr>
+            <!--<tr>
               <th>Retaurant</th>
               <th>Rating</th>
-            </tr>
+            </tr>-->
           </tbody>
         </table>
       </div>
