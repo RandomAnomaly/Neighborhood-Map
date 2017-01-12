@@ -1,7 +1,7 @@
 // The application's viewmodel
 var ViewModel = function (map, positions) {
   var self = this;
-  var markers = ko.observableArray([]);
+  var places = ko.observableArray([]);
 
   self.googleMap = map;
 
@@ -23,15 +23,23 @@ var ViewModel = function (map, positions) {
       types: model.placesSearchTypes
     };
 
+    // performs the google places api nearbySearch and returns a collection of Places
     service.nearbySearch(request, function (results, status) {
       // TODO: error handling
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         for (var i = 0; i < results.length; i += 1) {
-          new google.maps.Marker({
+          var place = new Place({
+            name: results[i].name,
+            latLng: results[i].geometry.location
+          });
+
+          place.marker = new google.maps.Marker({
             map: self.googleMap,
             position: results[i].geometry.location,
             title: results[i].name
-          })
+          });
+          places().push(place);
+
         }
       }
     });
@@ -51,7 +59,7 @@ function createMap() {
 }
 
 // Object to represent a place, initially marker is set to null
-function Place(dataObj){
+function Place(dataObj) {
   this.name = dataObj.name;
   this.latLng = dataObj.latLng;
   this.marker = null;
