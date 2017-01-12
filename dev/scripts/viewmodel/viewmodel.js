@@ -4,18 +4,11 @@ var ViewModel = function () {
   var lt = -41.288889;
   var lon = 174.777222;
 
-  self.myMap = ko.observable({
-    lat: ko.observable(lt),
-    lng: ko.observable(lon)
-  });
+  self.myMap = ko.observable({});
 
   this.cl = function () {
   }
 }
-
-
-
-
 
 // CUSTOM BINDINGS
 
@@ -40,7 +33,6 @@ ko.bindingHandlers.map = {
       types: model.placesSearchTypes
     };
 
-    // TODO move to model
     service.nearbySearch(request, function (results, status) {
       // TODO: error handling
       if (status == google.maps.places.PlacesServiceStatus.OK) {
@@ -54,16 +46,7 @@ ko.bindingHandlers.map = {
         console.log(results[0]);
       }
     });
-
-    // mapObj.marker = new google.maps.Marker({
-    //   map: mapObj.googleMap,
-    //   position: latLng,
-    //   title: "Title"
-    // });
-
   }
-
-
 };
 
 var applyBindings = function () {
