@@ -32,30 +32,29 @@ var ViewModel = function (map, positions) {
             name: results[i].name,
             latLng: results[i].geometry.location
           });
-
           place.marker = new google.maps.Marker({
             map: self.googleMap,
             position: results[i].geometry.location,
             title: results[i].name
           });
           self.placeList.push(place);
-
         }
       }
     });
 
-    self.filteredItems = ko.computed(function () {
-      var filter = self.searchString().toLowerCase();
-      if (!filter) {
-        return self.placeList();
-      } else {
-        return ko.utils.arrayFilter(self.placeList(), function (item) {
-          return item.name.toLowerCase().startsWith(filter);
-        });
-      }
-    });
-
   } ();
+
+  // Returns a filtered place list based on the search string
+  self.filteredItems = ko.computed(function () {
+    var filter = self.searchString().toLowerCase();
+    if (!filter) {
+      return self.placeList();
+    } else {
+      return ko.utils.arrayFilter(self.placeList(), function (item) {
+        return item.name.toLowerCase().startsWith(filter);
+      });
+    }
+  });
 }
 
 // returns a new google map based on the options in model
