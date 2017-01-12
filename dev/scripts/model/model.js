@@ -1,11 +1,8 @@
-//https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&type=restaurant&keyword=cruise&key=AIzaSyDTn_z5rWDu3IH_e2dNRG0F2-J0oO9LTa4
-//http://stackoverflow.com/questions/32899466/using-knockout-js-and-google-maps-api
-
 var model = {
-  position: { lat: -41.288889, lng: 174.777222 },
-  searchRadius: 1000,
-  placesSearchTypes: ['restaurant', 'bar'],
-  mapDefaultZoom: 18,
+  position: { lat: -41.288889, lng: 174.777222 }, // position where the map is going to center on
+  searchRadius: 1000, // radius in meters from the position value to find markers on google places
+  placesSearchTypes: ['restaurant', 'bar'], // the types of locations to find on google places
+  mapDefaultZoom: 16, // the starting zoom level
   mapStyles: [
     { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
     { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
