@@ -36,6 +36,7 @@ var ViewModel = function (map, positions) {
             map: self.googleMap,
             position: results[i].geometry.location,
             title: results[i].name
+            //animation: google.maps.Animation.DROP
           });
           self.placeList.push(place);
         }
