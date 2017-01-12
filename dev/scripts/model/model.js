@@ -3,8 +3,8 @@
 
 var model = {
   position: { lat: -41.288889, lng: 174.777222 },
-  searchRadius: 500,
-  placesSearchTypes: ['store'],
+  searchRadius: 1000,
+  placesSearchTypes: ['restaurant', 'bar'],
   mapDefaultZoom: 18,
   mapStyles: [
     { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },

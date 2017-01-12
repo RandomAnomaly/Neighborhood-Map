@@ -1,5 +1,6 @@
 var ViewModel = function (map, positions) {
   var self = this;
+  var markers = ko.observableArray([]);
 
   self.googleMap = map;
 
@@ -8,8 +9,8 @@ var ViewModel = function (map, positions) {
       map: self.googleMap,
       position: positions[i].latlng,
       title: positions[i].name
-    })
-  }
+    });
+  };
 
   var generateLocations = function () {
     service = new google.maps.places.PlacesService(self.googleMap);
@@ -30,11 +31,12 @@ var ViewModel = function (map, positions) {
             title: results[i].name
           })
         }
-        console.log(results[0]);
       }
     });
 
   } ();
+
+  console.log(self.googleMap);
 }
 
 
@@ -46,6 +48,11 @@ function createMap() {
   })
 }
 
+function Place(dataObj){
+  this.name = dataObj.name;
+  this.latLng = dataObj.latLng;
+  this.marker = null;
+}
 
 function init() {
   var locationList = [
