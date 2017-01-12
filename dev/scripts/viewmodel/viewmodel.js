@@ -1,9 +1,6 @@
 var ViewModel = function () {
   var self = this;
 
-  var lt = -41.288889;
-  var lon = 174.777222;
-
   self.myMap = ko.observable({});
 
   // CUSTOM BINDINGS
@@ -44,8 +41,6 @@ var ViewModel = function () {
       });
     }
   };
-  this.cl = function () {
-  }
 }
 
 
