@@ -1,17 +1,9 @@
 // The application's viewmodel
-var ViewModel = function (map, positions) {
+var ViewModel = function (map) {
   var self = this;
   self.placeList = ko.observableArray([]);
   self.searchString = ko.observable("");
   self.googleMap = map;
-
-  // for (var i = 0; i < positions.length; i += 1) {
-  //   new google.maps.Marker({
-  //     map: self.googleMap,
-  //     position: positions[i].latlng,
-  //     title: positions[i].name
-  //   });
-  // };
 
   // retrieve a collection of Place objects from the google places api
   var generateLocations = function () {
@@ -32,14 +24,11 @@ var ViewModel = function (map, positions) {
             name: results[i].name,
             latLng: results[i].geometry.location
           }, self.googleMap);
-
           self.placeList.push(place);
         }
       }
     });
-
   } ();
-
   // Returns a filtered place list based on the search string
   self.filteredItems = ko.computed(function () {
     var filter = self.searchString().toLowerCase();
@@ -79,7 +68,7 @@ function Place(dataObj, map) {
   this.isVisible = ko.observable(false);
 
   this.isVisible.subscribe(function (currentState) {
-    if(currentState){
+    if (currentState) {
       marker.setMap(map);
     } else {
       marker.setMap(null);
@@ -91,9 +80,6 @@ function Place(dataObj, map) {
 
 // initialise the application. This is the callback passed to the google maps api
 function init() {
-  var locationList = [
-    { name: "Wellington", latlng: model.position }
-  ]
   var googleMap = createMap();
-  ko.applyBindings(new ViewModel(googleMap, locationList));
+  ko.applyBindings(new ViewModel(googleMap));
 }
