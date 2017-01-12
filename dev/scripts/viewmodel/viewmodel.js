@@ -5,13 +5,13 @@ var ViewModel = function (map, positions) {
   self.searchString = ko.observable("");
   self.googleMap = map;
 
-  for (var i = 0; i < positions.length; i += 1) {
-    new google.maps.Marker({
-      map: self.googleMap,
-      position: positions[i].latlng,
-      title: positions[i].name
-    });
-  };
+  // for (var i = 0; i < positions.length; i += 1) {
+  //   new google.maps.Marker({
+  //     map: self.googleMap,
+  //     position: positions[i].latlng,
+  //     title: positions[i].name
+  //   });
+  // };
 
   // retrieve a collection of Place objects from the google places api
   var generateLocations = function () {
@@ -47,7 +47,9 @@ var ViewModel = function (map, positions) {
       return self.placeList();
     } else {
       return ko.utils.arrayFilter(self.placeList(), function (item) {
-        return item.name.toLowerCase().startsWith(filter);
+        var doesMatch = item.name.toLowerCase().startsWith(filter);
+        item.isVisible(doesMatch);
+        return doesMatch;
       });
     }
   });
@@ -62,25 +64,29 @@ function createMap() {
   })
 }
 
-// Object to represent a place, initially marker is set to null
+// Object to represent a place
 function Place(dataObj, map) {
+  var marker;
   this.name = dataObj.name;
   this.latLng = dataObj.latLng;
-  this.marker = null;
-
-
-  this.marker = new google.maps.Marker({
-    map: map,
+  marker = new google.maps.Marker({
+    // map: map,
     position: this.latLng,
     title: this.name
     //animation: google.maps.Animation.DROP
   });
 
-  // this.isVisible = ko.observable(false);
+  this.isVisible = ko.observable(false);
 
-  // this.isVisible.subscribe(function (currentState) {
+  this.isVisible.subscribe(function (currentState) {
+    if(currentState){
+      marker.setMap(map);
+    } else {
+      marker.setMap(null);
+    }
+  });
 
-  // })
+  this.isVisible(true);
 }
 
 // initialise the application. This is the callback passed to the google maps api
