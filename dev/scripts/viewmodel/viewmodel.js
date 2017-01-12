@@ -4,7 +4,10 @@ var ViewModel = function () {
   var lt = -41.288889;
   var lon = 174.777222;
 
-  self.myMap = ko.observable();
+  self.myMap = ko.observable({
+    lat: ko.observable(lt),
+    lng: ko.observable(lon)
+  });
 
   this.cl = function () {
   }
