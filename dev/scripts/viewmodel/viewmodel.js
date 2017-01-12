@@ -31,13 +31,8 @@ var ViewModel = function (map, positions) {
           var place = new Place({
             name: results[i].name,
             latLng: results[i].geometry.location
-          });
-          place.marker = new google.maps.Marker({
-            map: self.googleMap,
-            position: results[i].geometry.location,
-            title: results[i].name
-            //animation: google.maps.Animation.DROP
-          });
+          }, self.googleMap);
+
           self.placeList.push(place);
         }
       }
@@ -68,10 +63,24 @@ function createMap() {
 }
 
 // Object to represent a place, initially marker is set to null
-function Place(dataObj) {
+function Place(dataObj, map) {
   this.name = dataObj.name;
   this.latLng = dataObj.latLng;
   this.marker = null;
+
+
+  this.marker = new google.maps.Marker({
+    map: map,
+    position: this.latLng,
+    title: this.name
+    //animation: google.maps.Animation.DROP
+  });
+
+  // this.isVisible = ko.observable(false);
+
+  // this.isVisible.subscribe(function (currentState) {
+
+  // })
 }
 
 // initialise the application. This is the callback passed to the google maps api
