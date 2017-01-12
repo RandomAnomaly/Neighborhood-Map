@@ -15,20 +15,17 @@
         <h1>Map</h1>
         <form class="form-group">
           <label for="search-box">Filter</label>
-          <input type="text" class="form-control" id="search-box" placeholder="Restaurants">
+          <input type="text" class="form-control" id="search-box" data-bind="textInput: searchString" placeholder="Restaurants">
         </form>
         <table class="table table-hover">
-          <tbody data-bind="foreach: placeList()">
+          <tbody data-bind="foreach: filteredItems()">
             <tr>
               <th data-bind="text: name"></th>
               <th></th>
             </tr>
-            <!--<tr>
-              <th>Retaurant</th>
-              <th>Rating</th>
-            </tr>-->
           </tbody>
         </table>
+
       </div>
 
       <div class="col-xs-9">

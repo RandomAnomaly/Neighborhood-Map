@@ -2,7 +2,7 @@
 var ViewModel = function (map, positions) {
   var self = this;
   self.placeList = ko.observableArray([]);
-
+  self.searchString = ko.observable("");
   self.googleMap = map;
 
   for (var i = 0; i < positions.length; i += 1) {
@@ -44,9 +44,18 @@ var ViewModel = function (map, positions) {
       }
     });
 
-  } ();
+    self.filteredItems = ko.computed(function () {
+      var filter = self.searchString().toLowerCase();
+      if (!filter) {
+        return self.placeList();
+      } else {
+        return ko.utils.arrayFilter(self.placeList(), function (item) {
+          return item.name.toLowerCase().startsWith(filter);
+        });
+      }
+    });
 
-  console.log(self.googleMap);
+  } ();
 }
 
 // returns a new google map based on the options in model
