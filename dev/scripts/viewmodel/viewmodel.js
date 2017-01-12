@@ -45,7 +45,7 @@ var ViewModel = function (map) {
       });
     }
   });
-}
+};
 
 // returns a new google map based on the options in model
 function createMap() {
@@ -53,7 +53,7 @@ function createMap() {
     center: model.position,
     zoom: model.mapDefaultZoom,
     styles: model.mapStyles
-  })
+  });
 }
 
 // Object to represent a place
