@@ -10,29 +10,36 @@
 
 <body>
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-xs-3">
-        <h1>Map</h1>
-        <form class="form-group">
-          <label for="search-box">Filter</label>
-          <input type="text" class="form-control" id="search-box" data-bind="textInput: searchString" placeholder="Restaurants">
-        </form>
-        <table class="table table-hover">
-          <tbody data-bind="foreach: filteredItems()">
-            <tr>
-              <th data-bind="text: name"></th>
-              <th></th>
-            </tr>
-          </tbody>
-        </table>
 
-      </div>
-
-      <div class="col-xs-9">
-
-        <div id="map" data-bind="map"></div>
-      </div>
+    <div class="row" id="header">
     </div>
+
+
+    <div id="search-div">
+      <h1>Map</h1>
+      <form class="form-group">
+        <label for="search-box">Filter</label>
+        <input type="text" class="form-control" id="search-box" data-bind="textInput: searchString" placeholder="Restaurants">
+      </form>
+      <table class="table table-hover">
+        <tbody data-bind="foreach: filteredItems()">
+          <tr>
+            <th data-bind="text: name"></th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <div id="map" data-bind="map">
+    </div>
+
+
+    <div class="row" id="footer">
+    </div>
+
+
   </div>
   <!-- build:js scripts/main.js -->
   <script type="text/javascript" src="../node_modules/knockout/build/output/knockout-latest.js"></script>
