@@ -5,6 +5,8 @@ var ViewModel = function (map) {
   self.searchString = ko.observable("");
   self.googleMap = map;
 
+  self.filterVisible = ko.observable(model.filterVisible);
+
   // retrieve a collection of Place objects from the google places api
   var generateLocations = function () {
     service = new google.maps.places.PlacesService(self.googleMap);
@@ -30,11 +32,15 @@ var ViewModel = function (map) {
     });
   } ();
 
+  self.toggleFilter = function () {
+    self.filterVisible(!self.filterVisible());
+  }
+
   // Returns a filtered place list based on the search string
   self.filteredItems = ko.computed(function () {
     var filter = self.searchString().toLowerCase();
     if (!filter) {
-      self.placeList().forEach(function(v,i){
+      self.placeList().forEach(function (v, i) {
         v.isVisible(true);
       });
       return self.placeList();

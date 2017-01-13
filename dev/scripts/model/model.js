@@ -3,6 +3,7 @@ var model = {
   searchRadius: 1000, // radius in meters from the position value to find markers on google places
   placesSearchTypes: ['restaurant', 'bar', 'art_gallery', 'casino', 'liquor_store', 'meal_takeaway', 'meal_delivery', 'movie_rental', 'movie_theater'], // the types of locations to find on google places
   mapDefaultZoom: 15, // the starting zoom level
+  filterVisible: false,
   mapStyles: [
     { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
     { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },

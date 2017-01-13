@@ -17,7 +17,7 @@
     </div>
 
 
-    <div id="search-div">
+    <div id="search-div" data-bind="visible: filterVisible">
       <form class="form-group">
         <input type="text" class="form-control" id="search-box" data-bind="textInput: searchString" placeholder="Restaurants">
       </form>
@@ -37,7 +37,7 @@
 
 
     <div class="row" id="footer">
-      <h1><i class="fa fa-filter" aria-hidden="true"></i></h1>
+      <h1><i class="fa fa-filter" aria-hidden="true" data-bind="click: toggleFilter"></i></h1>
     </div>
 
 
