@@ -29,6 +29,7 @@ var ViewModel = function (map) {
       }
     });
   } ();
+
   // Returns a filtered place list based on the search string
   self.filteredItems = ko.computed(function () {
     var filter = self.searchString().toLowerCase();
@@ -52,7 +53,8 @@ function createMap() {
   return new google.maps.Map(document.getElementById('map'), {
     center: model.position,
     zoom: model.mapDefaultZoom,
-    styles: model.mapStyles
+    styles: model.mapStyles,
+    disableDefaultUI: true
   });
 }
 
